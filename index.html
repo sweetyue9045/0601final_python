@@ -41,11 +41,12 @@
             msg = msg + "&" + p_password;
             liff.sendMessages([  //推播訊息
                 {
-                    type: 'text',
-                    text: "已輸入帳密",
+                    type: 'action',
+                    
                     action: {
                         type: "postback",
                         label: "action",
+                        text: "已輸入帳密",
                         data: msg
                     }
                 }
