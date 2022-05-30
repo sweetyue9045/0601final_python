@@ -41,13 +41,31 @@
             msg = msg + "&" + p_password;
             liff.sendMessages([  //推播訊息
                 {
-                    type: 'action',
-                    
-                    action: {
-                        type: "postback",
-                        label: "action",
-                        text: "已輸入帳密",
-                        data: msg
+                    "type": "bubble",
+                    "size": "kilo",
+                    "hero": {
+                        "type": "image",
+                        "url": "https://www.iconpacks.net/icons/2/free-sent-email-icon-2579-thumb.png",
+                        "size": "full",
+                        "aspectRatio": "20:17"
+                    },
+                    "footer": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "action": {
+                                    "type": "postback",
+                                    "label": "點擊傳送給本bot",
+                                    "data": msg
+                                },
+                                "height": "sm",
+                                "style": "primary"
+                            }
+                        ],
+                        "flex": 0
                     }
                 }
             ])
