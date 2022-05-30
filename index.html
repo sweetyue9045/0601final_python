@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LIFF 表單測試</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="row" style="margin: 10px">
+        <div class="col-12" style="margin: 10px">
+            <label>帳號</label>
+            <input type="text" id="My_id" class="form-control" />
+            <br />
+            <label>密碼</label>
+            <input type="date" id="My_password" value="" class="form-control" />
+            <br />
+            <button class="btn btn-success btn-block" id="sure">確定</button>
+        </div>
+    </div>
+
+    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script>
+        function initializeLiff(myLiffId) {
+            liff
+                .init({
+                    liffId: myLiffId
+                });
+        }
+
+        function pushMsg(p_id, p_password) {
+            if (p_id == '' || p_password == '') {  //資料檢查
+                alert('每個項目都必須輸入！');
+                return;
+            }
+            var msg = "M&";  //回傳訊息字串
+            msg = msg + "&" + p_id;
+            msg = msg + "&" + p_password;
+            liff.sendMessages([  //推播訊息
+                {
+                    "type": "bubble",
+                    "size": "micro",
+                    "footer": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "已輸入帳密",
+                                "action": {
+                                    "type": "postback",
+                                    "data": msg
+                                },
+                                "align": "center"
+                            }
+                        ],
+                        "flex": 0
+                    }
+                }
+            ])
+                .then(() => {
+                    liff.closeWindow();  //關閉視窗
+                });
+        }
+
+        $(document).ready(function () {
+            initializeLiff('1657177329-6ZgzyLWx');
+            $('#sure').click(function (e) {  //按下確定鈕
+                pushMsg($('#My_id').val(), $('#My_password').val());
+            });
+        });
+    </script>
+</body>
+
+</html>
