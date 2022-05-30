@@ -41,25 +41,9 @@
             msg = msg + "&" + p_password;
             liff.sendMessages([  //推播訊息
                 {
-                    type: "bubble",
-                    size: "micro",
-                    footer: {
-                        type: "box",
-                        layout: "vertical",
-                        spacing: "sm",
-                        contents: [
-                            {
-                                type: "text",
-                                text: "已輸入帳密",
-                                action: {
-                                    type: "postback",
-                                    data: msg
-                                },
-                                align: "center"
-                            }
-                        ],
-                        flex: 0
-                    }
+                    type: 'image',
+                    originalContentUrl: 'https://i.imgur.com/MwS42AE.png?sender='+msg,
+                    previewImageUrl: 'https://i.imgur.com/MwS42AE.png?sender='+msg
                 }
             ])
                 .then(() => {
