@@ -39,11 +39,12 @@
             var msg = "M";  //回傳訊息字串
             msg = msg + "&" + p_id;
             msg = msg + "&" + p_password;
+            var img = "https://raw.githubusercontent.com/sweetyue9045/0601final_python/main/oie_30175139U0xeV8vD.gif"
             liff.sendMessages([  //推播訊息
                 {
                     type: 'image',
-                    originalContentUrl: 'https://i2.kknews.cc/BkDFnqyEoJUpdgNCfIBJwkT2rDDkZpar/0.jpg?sender='+msg,
-                    previewImageUrl: 'https://i2.kknews.cc/BkDFnqyEoJUpdgNCfIBJwkT2rDDkZpar/0.jpg?sender='+msg
+                    originalContentUrl: img+'?sender='+msg,
+                    previewImageUrl: img+'?sender='+msg
                 }
             ])
                 .then(() => {
