@@ -5,20 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PChome 登入</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
     <div class="row" style="margin: 20px">
         <div class="col-12" style="margin-top: 5px">
-            <label>帳號</label>
-            <input type="text" id="My_id" class="form-control" />
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="My_id" placeholder="帳號">
+                <label for="My_id">帳號</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="My_password" placeholder="密碼">
+                <label for="My_password">密碼</label>
             <br />
-            <label>密碼</label>
-            <input type="password" id="My_password" value="" class="form-control" />
-            <br />
-            <button class="btn btn-block" id="sure" style="background-color: #d00; color: #fff;">確定</button>
+            <button class="btn btn-block" id="sure" style="background-color: #d00; color: #fff;width:100%">確定</button>
         </div>
     </div>
 
